@@ -9,6 +9,7 @@
   "author": "Joan Killeen",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^11.2.0"
+    "cypress": "^11.2.0",
+    "cypress-xpath": "^2.0.1"
   }
 }
