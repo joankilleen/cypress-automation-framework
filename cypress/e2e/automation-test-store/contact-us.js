@@ -17,7 +17,7 @@ describe("Test Contact Us Form via Automation Test Store using CSS and XPath sel
 
     });
 
-    it("Should be able to open successfully contact us form using XPath selectors only", ()=>{
+    it.only("Should be able to open successfully contact us form using XPath selectors only", ()=>{
         cy.visit("https://www.automationteststore.com/")
 
         //Find url that ends with 'contact'
@@ -29,7 +29,10 @@ describe("Test Contact Us Form via Automation Test Store using CSS and XPath sel
         cy.xpath("/html//form[@id='ContactUsFrm']//button[@type='submit']").click()
  
         cy.url().should('contains', 'success')
- 
+
+        //Assertions - more than necessary
+        cy.xpath("//div[@id='maincontainer']//section//p[contains(., 'successfully')]").invoke('text').as('text')
+        cy.get('@text').should('contains', 'success') 
  
      });
     
