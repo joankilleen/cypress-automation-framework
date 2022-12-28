@@ -8,10 +8,10 @@ describe("Test Contact Us Form WebdriverUni", () =>{
     });
     it("Should be able to submit succcessfullly on contact us form", ()=>{
         cy.visit("http://www.webdriveruniversity.com/Contact-Us/contactus.html")
-        cy.get('[name="first_name"]').type("Joan")
-        cy.get('[name="last_name"]').type("Killeen")
-        cy.get('[name="email"]').type("joan@test.ch")
-        cy.get('textarea.feedback-input').type("My test comment")
+        cy.get('input[name="first_name"]').type("Joan")
+        cy.get('input[name="last_name"]').type("Killeen")
+        cy.get('input[name="email"]').type("joan@test.ch")
+        cy.get("form#contact_form > textarea[name='message']").type("My test comment")
         cy.get('[type="submit"]').click()
        
          
@@ -20,7 +20,7 @@ describe("Test Contact Us Form WebdriverUni", () =>{
         cy.visit("http://www.webdriveruniversity.com/Contact-Us/contactus.html")
         cy.get('[name="first_name"]').type("Killeen")
         cy.get('[name="email"]').type("joan@test.ch")
-        cy.get('textarea.feedback-input').type("My test comment")
+        cy.get("form#contact_form > textarea[name='message']").type("My test comment")
         cy.get('[type="submit"]').click()
         cy.get('body').then(function(e){
             const t = e.text()
