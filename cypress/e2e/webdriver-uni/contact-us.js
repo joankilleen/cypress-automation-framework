@@ -13,19 +13,17 @@ describe("Test Contact Us Form WebdriverUni", () =>{
         cy.get('input[name="email"]').type("joan@test.ch")
         cy.get("form#contact_form > textarea[name='message']").type("My test comment")
         cy.get('[type="submit"]').click()
+        cy.xpath("//h1").should("include.text", "Thank You")
        
          
     });
-    it("Should not be able to submit succcessfullly on contact us form as required field not present", ()=>{
+    it.only("Should not be able to submit succcessfullly on contact us form as required field not present", ()=>{
         cy.visit("http://www.webdriveruniversity.com/Contact-Us/contactus.html")
         cy.get('[name="first_name"]').type("Killeen")
         cy.get('[name="email"]').type("joan@test.ch")
         cy.get("form#contact_form > textarea[name='message']").type("My test comment")
         cy.get('[type="submit"]').click()
-        cy.get('body').then(function(e){
-            const t = e.text()
-            expect(t).to.contains("Error: all fields are required")
-        })
+        cy.xpath('//body').should("include.text","Error: all fields are required")
 
     });
 })
