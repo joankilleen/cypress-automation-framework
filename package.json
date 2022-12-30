@@ -4,7 +4,13 @@
   "description": "First tests",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:run": "cypress run",
+    "cy:run:chrome": "cypress run --browser chrome",
+    "cy:run:test-store": "cypress run --spec cypress/e2e/automation-test-store/*",
+    "cy:run:webdriver-uni": "cypress run --spec cypress/e2e/webdriver-uni/*",
+    "cy:run:headed": "cypress run --headed",
+    "cy:open": "cypress open"
   },
   "author": "Joan Killeen",
   "license": "ISC",
