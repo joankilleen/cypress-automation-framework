@@ -1,15 +1,27 @@
-/// <reference types="Cypress" />
+/// <reference types="cypress" />
 
-describe("Cypress web security", () =>{
-    it("Validate visiting 2 different domains. This is not allowed", ()=>{
-        cy.visit("http://www.webdriveruniversity.com/")
-        cy.visit("https://www.automationteststore.com/")
+describe("Cypress web security", () => {
+    it.skip("Validate visiting two different domains", () => {
+        cy.visit('http://www.webdriveruniversity.com/');
+        cy.visit('https://www.google.com');
     });
 
-    it.only("Validate visiting 2 different domains by user actions. This is not allowed unless chromeWebSecurity: false in config file", ()=>{
-        cy.visit("http://www.webdriveruniversity.com/")
+    it("Validate visiting two different domains via user actions", () => {
+        cy.visit('http://www.webdriveruniversity.com/');
         cy.get('#automation-test-store').invoke('removeAttr', 'target').click()
     });
 
-    
+    it('Origin command. This requires activation of "experimentalSessionAndOrigin" in the config', () => {
+        cy.origin('webdriveruniversity.com', () => {
+            cy.visit("/");
+        })
+
+        cy.origin('automationteststore.com', () => {
+            cy.visit("/");
+        })
+
+        //Same Origin Example:
+        //cy.visit("https://www.webdriveruniversity.com");
+        //cy.visit("https://selectors.webdriveruniversity.com");
+    });
 })
