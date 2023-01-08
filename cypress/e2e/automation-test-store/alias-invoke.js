@@ -44,7 +44,7 @@ describe("Alias and invoke", () => {
             cy.log("Final itemsTotal " + itemsTotal)      
             expect(itemsTotal).to.equal(625.6) 
         })
-        
+       
      })
  })
  
