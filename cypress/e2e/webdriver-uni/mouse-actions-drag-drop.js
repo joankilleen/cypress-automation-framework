@@ -28,9 +28,19 @@ describe("Handling drag drop and other mouse actions", () =>{
             expect($el).to.have.css('background-color', 'rgb(147, 203, 90)')
 
         })
+    })
         
+    it.only('Click and Hold', ()=>{
+        cy.visit("http://www.webdriveruniversity.com")
+        cy.get('#actions').scrollIntoView().invoke('removeAttr', 'target').click({force:true})
+        cy.get("#click-box").trigger("mousedown").then($el =>{
+            expect($el).to.have.css('background-color', 'rgb(0, 255, 0)')
+            cy.wait(1000)
+            $el.trigger("mouseup")
+            expect($el).to.have.css('background-color', 'rgb(255, 99, 71)')
+        })
+    })
+
+
     
-
-
-    });
 })
